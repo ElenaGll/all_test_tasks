@@ -2,7 +2,7 @@ import json
 from json.decoder import JSONDecodeError
 
 
-def get_json_with_values(values_file_name, structure_file_name):
+def get_json_with_values(values_file_name, structure_file_name, result_file_name):
     with open(values_file_name) as file:
         values = json.load(file)
 
@@ -29,7 +29,7 @@ def get_json_with_values(values_file_name, structure_file_name):
 
             go_through_dict(test_case)
 
-            with open('Result.json', 'w') as f:
+            with open(result_file_name, 'w') as f:
                 json.dump(test_case, f,
                           indent=4,
                           ensure_ascii=False,
@@ -45,5 +45,5 @@ def get_json_with_values(values_file_name, structure_file_name):
                           separators=(',', ': '))
 
 
-get_json_with_values('Values.json', 'TestcaseStructure.json')
-get_json_with_values('Values.json', 'TestcaseStructureWithError.json')
+get_json_with_values('Values.json', 'TestcaseStructure.json', 'Result.json')
+get_json_with_values('Values.json', 'TestcaseStructureWithError.json', 'Result_1.json')
